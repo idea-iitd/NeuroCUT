@@ -1,0 +1,10 @@
+total_nodes: 432
+total_edges: 2217
+total_connected_components: 1
+avg_degree: 10.26388888888889
+highest_degree: 32
+lowest_degree: 1
+avg_clustering_coeff: 0.08774739513459301
+avg_degree_centrality: 0.023814127352410404
+avg_closeness_centrality: 0.23847149249799685
+avg_betweenness_centrality: 0.007939965946629737

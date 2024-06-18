@@ -1,0 +1,1 @@
+{"num_nodes": 2485, "num_edges": 5069, "num_cuts": 5, "hMetis_norm_cut": 0.34538179636001587, "spectral_norm_cut": 0.12635625898838043, "spectral_norm_cut_35": 0.43459010124206543}

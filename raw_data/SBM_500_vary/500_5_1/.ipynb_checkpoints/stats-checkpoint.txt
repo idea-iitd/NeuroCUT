@@ -1,0 +1,12 @@
+total_nodes: 500
+total_edges: 2236
+n: [100, 100, 100, 100, 100]
+p: [[0.01, 0.002, 0.002, 0.002, 0.002], [0.002, 0.01, 0.002, 0.002, 0.002], [0.002, 0.002, 0.01, 0.002, 0.002], [0.002, 0.002, 0.002, 0.2, 0.002], [0.002, 0.002, 0.002, 0.002, 0.2]]
+total_connected_components: 50
+avg_degree: 8.944
+highest_degree: 32
+lowest_degree: 0
+avg_clustering_coeff: 0.07581374939628836
+avg_degree_centrality: 0.017923847695390772
+avg_closeness_centrality: 0.17814973599674158
+avg_betweenness_centrality: 0.005116465863453816

@@ -1,0 +1,1 @@
+{"num_nodes": 495, "num_edges": 555, "num_cuts": 5}
