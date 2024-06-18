@@ -1,5 +1,4 @@
-1. https://arxiv.org/abs/1906.01227
-2. https://github.com/chaitjo/graph-convnet-tsp
+This repository is an official implementation of the Paper : [NeuroCUT: A Neural Approach for Robust Graph Partitioning](https://arxiv.org/abs/2310.11787), accepted in KDD'24.
 
 
 ## Commands to run
@@ -9,11 +8,12 @@ source {environment name}/bin/activate
 ```
 2. Various parameters are listed in [makefile](/src/makefile), run commmand
 ```
-make parameter_1={value_1} parameter_2={value_2} .. 
+make parameter_1={value_1} parameter_2={value_2} ..
+```
+
 Example command has been provided in the run.sh file.
 
-Reults will be formed in the results¯ folder
-```
+Reults will be formed in the `results` folder, and model will be saved in `models` folder.
 
 ## Sample Dataset
 A sample Cora graph is given in the data folder. The structure of input graph is as follows:
