@@ -1,3 +1,5 @@
+# NeuroCUT: A Neural Approach for Robust Graph Partitioning
+
 This repository is an official implementation of the Paper : [NeuroCUT: A Neural Approach for Robust Graph Partitioning](https://arxiv.org/abs/2310.11787), accepted in KDD'24.
 
 
