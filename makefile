@@ -1,7 +1,7 @@
 train = cora_lc
 embedding = given_lipchitz##coefficents,  Lipschitz_rw, Lipschitz_sp,Lipschitz_rw_only,spectral, Lipschitz_rw_node_weights
 anchors = 35# default 20 for 500, 3 for 30
-epochs = 60
+epochs = 40
 need_training=true		# true or false
 model_name=graphsage      ## gcn,gat,graphsage,mlp
 num_layers=2

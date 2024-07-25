@@ -15,8 +15,9 @@ from torch_geometric.utils import from_networkx
 
 
 class dataset(Dataset):
-    def __init__(self,folder,embeding,norm,beta,device='cpu',args=None):
+    def __init__(self,dataset_name,folder,embeding,norm,beta,device='cpu',args=None):
         super().__init__()
+        self.dataset_name = dataset_name
         self.folder=folder
         self.embeding=embeding
         self.anchors=args.anchors
@@ -41,13 +42,8 @@ class dataset(Dataset):
     
     def generate_edge_index(self,index):
         edge_list_path = self.folder+f'/{index}/graph.txt'
-        if self.embeding=='given_lipchitz' or self.embeding=='given_spectral' or self.embeding=='given_lipchitz_beta':
-            options = ['cora_lc','citeseer_lc','harbin','roman_empire','actor','ogbn_arxiv','coauthor','questions','horse']
-            for g in options:
-                if self.folder.startswith(g):
-                    edge_list_path=f'../raw_data/{g}/graph.txt'
-                    break
-            # TODO check it
+        if self.embeding=='given_lipchitz' or self.embeding=='given_spectral' or self.embeding=='given_lipchitz_beta':      # doesnt matter which edge_list_path you use, both should be same
+            edge_list_path = f'../raw_data/{self.dataset_name}/graph.txt'
 
         num_nodes=self.read_num_nodes(index)
         tgraph=nx.read_edgelist(edge_list_path, nodetype=int)
@@ -64,43 +60,38 @@ class dataset(Dataset):
         # As = sparse_mx_to_torch_sparse_tensor(A)
     
     def generate_features(self,index):
-        options = ['cora_lc','citeseer_lc','harbin','roman_empire','actor','ogbn_arxiv','coauthor','questions','horse']
         if (self.embeding=="coefficents"):
             filename=self.folder+f'/{index}/features_{self.embeding}_{self.norm}.pkl'
         elif (self.embeding=='spectral'):
             filename=self.folder+f'/{index}/features_spectral_{self.anchors}_{self.norm}.pkl'
         elif (self.embeding=='given'):
-            for g in options:
-                if g in self.folder:
-                    filename=f'../raw_data/{g}/node_embeddings.pt'
-                    break
+            filename = f'../raw_data/{self.dataset_name}/node_embeddings.pt'
+            if not os.path.isfile(filename):
+                raise FileNotFoundError(f"{filename} not found")
+                
         elif (self.embeding=='given_spectral'):
             filename = self.folder+f'/{index}/features_{self.embeding}_{self.anchors}_{self.norm}.pkl'
-            for g in options:
-                if g in self.folder:
-                    f2=f'../raw_data/{g}/node_embeddings.pt'
-                    break
+            f2 = f'../raw_data/{self.dataset_name}/node_embeddings.pt'
+            if not os.path.isfile(f2):
+                raise FileNotFoundError(f"{f2} not found")
         
         elif (self.embeding=='given_lipchitz'):
             filename=self.folder+f'/{index}/features_{self.embeding}_{self.anchors}_{self.norm}.pkl'
-            for g in options:
-                if g in self.folder:
-                    f2=f'../raw_data/{g}/node_embeddings.pt'
-                    break
+            f2 = f'../raw_data/{self.dataset_name}/node_embeddings.pt'
+            if not os.path.isfile(f2):
+                raise FileNotFoundError(f"{f2} not found")
 
         elif (self.embeding=='given_lipchitz_weight'):
             filename=self.folder+f'/{index}/features_{self.embeding}_{self.anchors}_{self.norm}.pkl'
-            for g in options:
-                if g in self.folder:
-                    f2=f'../raw_data/{g}/node_embeddings.pt'
-                    break
+            f2 = f'../raw_data/{self.dataset_name}/node_embeddings.pt'
+            if not os.path.isfile(f2):
+                raise FileNotFoundError(f"{f2} not found")
 
         elif (self.embeding=='given_lipchitz_beta'):
             filename=self.folder+f'/{index}/features_{self.embeding}_{self.anchors}_{self.norm}_{self.beta}.pkl'
-            for g in options:
-                if g in self.folder:
-                    f2=f'../raw_data/{g}/node_embeddings.pt'
-                    break 
+            f2 = f'../raw_data/{self.dataset_name}/node_embeddings.pt'
+            if not os.path.isfile(f2):
+                raise FileNotFoundError(f"{f2} not found")
 
             
         else:

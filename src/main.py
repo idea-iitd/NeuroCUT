@@ -37,7 +37,7 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument('--embedding', type=str, default='coefficients',
                     help='What embedding to use (Lipschitz_rw or Lipschitz_sp or coefficients )')
-parser.add_argument('--train', type=str, default='cora',
+parser.add_argument('--train', type=str, default='cora_lc',
                 help='Dataset to train')
 parser.add_argument('--anchors', type=int, default=30, help='Number of Anchors for Lipschitz')
 parser.add_argument('--epochs', type=int, default=100, help='Number of epochs train')
@@ -128,9 +128,9 @@ os.makedirs(result_folder+"/val_set", exist_ok=True)
 os.makedirs(result_folder+"/test_set",exist_ok=True)
 # print(result_path)
 # using dataset class defined in datasets.py
-train_dataset=dataset(dataset_path+'/train_set',embedding,norm,beta,device,args=args) 
-val_dataset=dataset(dataset_path+'/val_set',embedding,norm,beta,device,args=args)
-test_dataset=dataset(dataset_path+'/test_set',embedding,norm,beta,device,args=args)
+train_dataset=dataset(args.train,dataset_path+'/train_set',embedding,norm,beta,device,args=args) 
+val_dataset=dataset(args.train,dataset_path+'/val_set',embedding,norm,beta,device,args=args)
+test_dataset=dataset(args.train,dataset_path+'/test_set',embedding,norm,beta,device,args=args)
 # print(len(train_dataset[0].x))
 # DataLoader helps in batching
 dataloader=DataLoader(train_dataset,batch_size=1,shuffle=True)

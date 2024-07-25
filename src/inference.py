@@ -119,9 +119,9 @@ model_folder=f'../models/{args.train}_{args.embedding}_{args.anchors}_{args.norm
 
 # print(result_path)
 # using dataset class defined in datasets.py
-train_dataset=dataset(dataset_path+'/train_set',embedding,norm,core_node_path+'/train_set',device,args=args) 
-val_dataset=dataset(dataset_path+'/val_set',embedding,norm,core_node_path+'/val_set',device,args=args)
-test_dataset=dataset(dataset_path+'/test_set',embedding,norm,core_node_path+'/test_set',device,args=args)
+train_dataset=dataset(args.train,dataset_path+'/train_set',embedding,norm,core_node_path+'/train_set',device,args=args) 
+val_dataset=dataset(args.train,dataset_path+'/val_set',embedding,norm,core_node_path+'/val_set',device,args=args)
+test_dataset=dataset(args.train,dataset_path+'/test_set',embedding,norm,core_node_path+'/test_set',device,args=args)
 # print(len(train_dataset[0].x))
 
 # DataLoader helps in batching
