@@ -31,3 +31,7 @@ A sample Cora graph is given in the data folder. The structure of input graph is
 ```
 Also, to run on any new graph, you need to add the graph.txt and node_embedding.pt file in raw_data folder. 
 
+## Adding a new dataset 
+1. Add the `graph.txt` and `node_embedding.pt` file in the `raw_data` folder. You can use the [a.py](./raw_data/a.py) file to download and modify the dataset.
+2. Create an experiment in the `data` folder containing the train, test, and validation subdirectories. You will need to add the `graph.txt` and `graph_stats.txt` file there.
+3. Our framework supports training on multiple graphs and inferring on different graphs as well. Configure your experiment folder accordingly to take advantage of this flexibility. 
